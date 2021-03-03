@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Classes extends Model
 {
     use HasFactory;
+    protected $fillable = ['descricao','turma','serie','ensino','ano'];
+    protected $hidden = ['created_at', 'updated_at'];
 }

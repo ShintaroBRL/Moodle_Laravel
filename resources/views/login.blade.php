@@ -20,7 +20,7 @@
     <form method="POST" action="/" class="form-signin">
       @csrf
       <div class="text-center mb-4">
-        <img class="mb-4" src="https://www.flaticon.com/svg/vstatic/svg/2941/2941554.svg?token=exp=1613679060~hmac=799eb5d858863d15fa93c27170cec3d4" alt="" width="72" height="72">
+        <img class="mb-4" src="https://tracker.moodle.org/secure/attachment/62695/Mobile-M-Icon-1-corners.png" alt="" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">Login</h1>
       </div>
 

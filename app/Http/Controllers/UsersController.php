@@ -6,24 +6,47 @@ use Illuminate\Http\Request;
 use App\Models\Usuarios;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 
-class UsersController extends Controller
-{
-  public function getAllUsers () {
-    $usuarios = Usuarios::get()->toJson(JSON_PRETTY_PRINT);
-    return response($usuarios, 200);
+class UsersController extends Controller{
+
+  public function login (Request $request) {
+    if(Usuarios::whereraw("user='".$request->user."' AND pass='".$request->pass."'")->exists()) {
+      $usuario = Usuarios::whereraw("user='".$request->user."' AND pass='".$request->pass."'")->first();
+      return response()->json([
+        "token" => $usuario->token,
+        "id" => $usuario->id,
+        "type" => $usuario->type,
+        "name" => $usuario->user
+      ], 202);
+    } else {
+      return response()->json([
+        "message" => "user not found"
+      ], 404);
+    }
   }
 
-  public function createUser (Request $request) {
+  public function register (Request $request) {
+    $token = Str::random(60);
     $usuario = new Usuarios;
     $usuario->user = $request->user;
-    $usuario->pass = Hash::make($request->pass);
-    $usuario->type = $request->type;
+    $usuario->pass = $request->pass;
+    $usuario->type = 1;
+    $usuario->token = $token;
     $usuario->save();
 
     return response()->json([
-        "message" => "user record created"
-    ], 201);
+      "token" => $usuario->token,
+      "id" => $usuario->id,
+      "type" => $usuario->type,
+      "name" => $usuario->user
+    ], 202);
+  }
+
+  public function getAllUsers () {
+    Log::warning("Algem esta me chamando getAllUsers");
+    $usuarios = Usuarios::get()->toJson(JSON_PRETTY_PRINT);
+    return response($usuarios, 200);
   }
 
   public function getUser ($id) {
@@ -60,19 +83,6 @@ class UsersController extends Controller
       $usuario = Usuarios::find($id);
       $usuario->delete();
 
-      return response()->json([
-        "message" => "records deleted"
-      ], 202);
-    } else {
-      return response()->json([
-        "message" => "user not found"
-      ], 404);
-    }
-  }
-
-  public function authuser (Request $request) {
-    Log::warning("Algem esta me chamando");
-    if(Usuarios::whereraw("user='".$request->user."' AND pass='".$request->pass."'")->exists()) {
       return response()->json([
         "message" => "records deleted"
       ], 202);
