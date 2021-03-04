@@ -1,0 +1,5 @@
+ applications:
+ - name: Serity
+   random-route: true
+   buildpack: https://github.com/cloudfoundry/php-buildpack#v3.2.2
+   memory: 128M

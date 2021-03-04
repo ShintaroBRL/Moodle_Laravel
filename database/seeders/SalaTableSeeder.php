@@ -18,12 +18,14 @@ class SalaTableSeeder extends Seeder {
     public function run() {
         $classes = Classes::pluck('id');
         $usuarios= Usuarios::pluck('id');
+        $professores= Usuarios::where('type','=','0')->pluck('id');
         $disciplinas= Disciplinas::pluck('id');
 
         $faker = \Faker\Factory::create();
 
         foreach (range(1,10) as $index) {
             Salas::create([
+            'professor_id' => $faker->randomElement($professores),
             'classe_id' => $faker->randomElement($classes),
             'usuario_id' => $faker->randomElement($usuarios),
             'disciplina_id' => $faker->randomElement($disciplinas)

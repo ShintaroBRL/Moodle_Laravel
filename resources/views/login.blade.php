@@ -7,7 +7,7 @@
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
 
-    <title>Moodle-Login</title>
+    <title>serity-Login</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -20,7 +20,7 @@
     <form method="POST" action="/" class="form-signin">
       @csrf
       <div class="text-center mb-4">
-        <img class="mb-4" src="https://tracker.moodle.org/secure/attachment/62695/Mobile-M-Icon-1-corners.png" alt="" width="72" height="72">
+        <img class="mb-4" src="https://tracker.serity.org/secure/attachment/62695/Mobile-M-Icon-1-corners.png" alt="" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">Login</h1>
       </div>
 

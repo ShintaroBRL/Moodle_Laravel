@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Salas extends Model
 {
     use HasFactory;
-    protected $fillable = ['classe_id','usuario_id','disciplina_id'];
+    protected $fillable = ['professor_id','classe_id','usuario_id','disciplina_id'];
     protected $hidden = ['created_at', 'updated_at'];
 }

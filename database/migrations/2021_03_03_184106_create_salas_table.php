@@ -15,6 +15,7 @@ class CreateSalasTable extends Migration
     {
         Schema::create('salas', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('professor_id')->references('id')->on('usuarios');
             $table->foreignId('usuario_id')->references('id')->on('usuarios');
             $table->foreignId('classe_id')->references('id')->on('classes');
             $table->foreignId('disciplina_id')->references('id')->on('classes');
