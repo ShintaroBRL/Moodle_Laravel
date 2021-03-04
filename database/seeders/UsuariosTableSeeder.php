@@ -19,13 +19,13 @@ class UsuariosTableSeeder extends Seeder {
         $password = Hash::make('toptal');
 
         Usuarios::create([
-            'user' => 'Administrator',
+            'user' => 'Admin',
             'pass' => 'toptal',
             'type' => '-1',
             'token' => Str::random(60)
         ]);
 
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 50; $i++) {
             Usuarios::create([
                 'user' => $faker->firstName,
                 'pass' => 'toptal',

@@ -48,7 +48,8 @@ class MigrateInOrder extends Command
             '2021_02_18_185906_create_usuarios_table.php',
             '2021_02_18_185807_create_classes_table.php',
             '2021_02_18_185754_create_disciplinas_table.php',
-            '2021_03_03_184106_create_salas_table.php',
+            '2021_03_03_184106_create_turmas_table.php',
+            '2021_03_04_170705_create_salas_table.php',
             '2021_02_18_185820_create_conteudos_table.php',
             '2021_02_18_185754_create_trabalhos_table.php',
         ];

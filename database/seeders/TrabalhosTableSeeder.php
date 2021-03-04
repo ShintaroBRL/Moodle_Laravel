@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Salas;
+use App\Models\turmas;
 use App\Models\Usuarios;
 use App\Models\Trabalhos;
 
@@ -16,7 +16,7 @@ class TrabalhosTableSeeder extends Seeder
      */
     public function run()
     {
-        $salas = Salas::pluck('id');
+        $turmas = turmas::pluck('id');
         $usuarios= Usuarios::where('type','=','0')->pluck('id');
         
         $faker = \Faker\Factory::create();
@@ -25,7 +25,7 @@ class TrabalhosTableSeeder extends Seeder
             Trabalhos::create([
             'titulo' => $faker->sentence($nbWords = 6, $variableNbWords = true),
             'descricao' => $faker->realText($maxNbChars = 200, $indexSize = 2),
-            'sala_id' => $faker->randomElement($salas),
+            'turma_id' => $faker->randomElement($turmas),
             'created_by_user_id' => $faker->randomElement($usuarios),
             'data_inicio' => $faker->dateTime($max = 'now', $timezone = null),
             'data_fim' => $faker->dateTime($max = 'now', $timezone = null),

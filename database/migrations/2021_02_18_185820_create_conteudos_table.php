@@ -17,7 +17,7 @@ class CreateConteudosTable extends Migration
             $table->id();
             $table->text('titulo');
             $table->text('descricao');
-            $table->foreignId('sala_id')->references('id')->on('salas');
+            $table->foreignId('turma_id')->references('id')->on('turmas');
             $table->foreignId('created_by_user_id')->references('id')->on('usuarios');
             $table->timestamp('data_inicio');
             $table->timestamp('data_fim');

@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Conteudos extends Model
+class Turmas extends Model
 {
     use HasFactory;
-    protected $fillable = ['titulo','descricao','turma_id','created_by_user_id','data_inicio','data_fim'];
+    protected $fillable = ['professor_id','classe_id','disciplina_id'];
     protected $hidden = ['created_at', 'updated_at'];
 }
