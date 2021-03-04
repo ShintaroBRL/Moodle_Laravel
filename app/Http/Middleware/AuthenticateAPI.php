@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-class Authenticate{
+class AuthenticateAPI{
     
     public function handle($request, Closure $next){
             if($request->header('token') == null)

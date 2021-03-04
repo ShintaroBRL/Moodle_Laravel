@@ -1,8 +1,8 @@
 <div class="menu">
     <ul class="list">
         <li class="header">MAIN NAVIGATION</li>
-        <li class="active">
-            <a href="/">
+        <li class={{($title == "Home")? "active" : "" }}>
+            <a href="/home">
                 <i class="material-icons">home</i>
                 <span>Home</span>
             </a>
@@ -25,11 +25,13 @@
                 <span>Avaliações</span>
             </a>
         </li>
-        <li>
-            <a href="/usuarios">
-                <i class="material-icons">announcement</i>
-                <span>Usuarios</span>
-            </a>
-        </li>
+        @if ($user_type == "-1")
+            <li class="<?php echo ($title == "Usuarios")? "active" : "" ; ?>">
+                <a href="/usuarios">
+                    <i class="material-icons">folder_shared</i>
+                    <span>Usuarios</span>
+                </a>
+            </li>
+        @endif
     </ul>
 </div>

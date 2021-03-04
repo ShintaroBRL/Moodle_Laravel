@@ -9,8 +9,9 @@
 
     <title>serity-Login</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <!-- Custom styles for this template -->
     <link href="css/floating-labels.css" rel="stylesheet">
@@ -42,5 +43,34 @@
       <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
       <p class="mt-5 mb-3 text-muted text-center">&copy; 2017-2018</p>
     </form>
+
+    @if ($errors->any())
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+            
+            <div class="modal-content">
+                <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">ERROR</h4>
+                </div>
+                <div class="modal-body">
+                    @foreach ($errors->all() as $error)
+                        <p>{{$error}}</p><br>
+                    @endforeach
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        <script>
+                $(document).ready(function(){
+                    $("#myModal").modal();
+                });
+        </script>
+    @endif
+
   </body>
 </html>

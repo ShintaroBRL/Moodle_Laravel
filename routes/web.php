@@ -2,57 +2,23 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\TrabalhosController;
-use App\Http\Controllers\ConteudosController;
-use App\Http\Controllers\AvaliacoesController;
-use App\Http\Controllers\UsuariosController;
+use App\Http\Controllers\web\LoginController;
+use App\Http\Controllers\web\HomeController;
+use App\Http\Controllers\web\TrabalhosController;
+use App\Http\Controllers\web\ConteudosController;
+use App\Http\Controllers\web\AvaliacoesController;
+use App\Http\Controllers\web\UsuariosController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes - Login
-|--------------------------------------------------------------------------
-*/
+Route::match(['get', 'post'], '/', 'Web\LoginController@login');
 
-Route::match(['get', 'post'], '/', 'LoginController@auth');
+Route::middleware('webauthficate:all')->group(function () {
+    Route::get('/home', 'web\HomeController@home');
+    Route::get('/trabalhos', 'web\TrabalhosController@home');
+    Route::get('/conteudos', 'web\ConteudosController@home');
+    Route::get('/avaliacoes', 'web\AvaliacoesController@home');
+    Route::get('/logout', 'web\LoginController@logout');
+});
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes - Home
-|--------------------------------------------------------------------------
-*/
-
-Route::get('/home', 'HomeController@home');
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes - Trabalhos
-|--------------------------------------------------------------------------
-*/
-
-Route::get('/trabalhos', 'TrabalhosController@list');
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes - Conteudos
-|--------------------------------------------------------------------------
-*/
-
-Route::get('/conteudos', 'ConteudosController@list');
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes - Avaliações
-|--------------------------------------------------------------------------
-*/
-
-Route::get('/avaliacoes', 'AvaliacoesController@list');
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes - Usuarios
-|--------------------------------------------------------------------------
-*/
-
-Route::get('/usuarios', 'UsuariosController@list');
+Route::middleware('webauthficate:admin')->group(function () {
+    Route::get('/usuarios', 'web\UsuariosController@home');
+});

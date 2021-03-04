@@ -9,5 +9,5 @@ class Usuarios extends Model
 {
     use HasFactory;
     protected $fillable = ['user', 'pass', 'type', 'token'];
-    protected $hidden = ['pass', 'token','created_at','updated_at'];
+    protected $hidden = ['token','created_at','updated_at'];
 }
