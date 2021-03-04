@@ -9,7 +9,7 @@ use App\Http\Controllers\web\ConteudosController;
 use App\Http\Controllers\web\AvaliacoesController;
 use App\Http\Controllers\web\UsuariosController;
 
-Route::match(['get', 'post'], '/', 'Web\LoginController@login');
+Route::match(['get', 'post'], '/', 'web\LoginController@login');
 
 Route::middleware('webauthficate:all')->group(function () {
     Route::get('/home', 'web\HomeController@home');
