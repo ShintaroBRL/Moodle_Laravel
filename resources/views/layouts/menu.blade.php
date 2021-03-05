@@ -7,19 +7,19 @@
                 <span>Home</span>
             </a>
         </li>
-        <li>
+        <li class={{($title == "Trabalhos")? "active" : "" }}>
             <a href="/trabalhos">
                 <i class="material-icons">assignment</i>
                 <span>Trabalhos</span>
             </a>
         </li>
-        <li>
+        <li class={{($title == "Conteudos")? "active" : "" }}>
             <a href="/conteudos">
                 <i class="material-icons">book</i>
                 <span>Conteudos</span>
             </a>
         </li>
-        <li>
+        <li class={{($title == "Avaliações")? "active" : "" }}>
             <a href="/avaliacoes">
                 <i class="material-icons">announcement</i>
                 <span>Avaliações</span>
